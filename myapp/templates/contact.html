@@ -1,0 +1,67 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- Navigation
+    ==========================================-->
+<!-- Header -->
+
+<!-- Get Touch Section -->
+<!-- Contact Section -->
+<div id="contact">
+  <div class="container">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="section-title">
+          <h2>Contact</h2>
+          
+        </div>
+        <h3>
+          {% if msg %}
+            {{msg}}
+          {% endif %}          
+        </h3>
+        <form name="sentMessage" method="post" action="{% url 'contact' %}">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" id="name" class="form-control" placeholder="Enter First Name" required="required" name="fname">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" id="name" class="form-control" placeholder="Enter Last Name" required="required" name="lname">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="email" id="email" class="form-control" placeholder="Email" required="required" name="email">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea name="message" id="message" class="form-control" rows="4" placeholder="Message" required name="message"></textarea>
+            <p class="help-block text-danger"></p>
+          </div>
+          <div id="success"></div>
+          <button type="submit" class="btn btn-custom btn-lg">Send Message</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-3 col-md-offset-1 contact-info">
+     
+    </div>
+    
+  </div>
+</div>
+</body>
+</html>
+{% endblock %}

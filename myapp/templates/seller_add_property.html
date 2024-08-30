@@ -1,0 +1,151 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="text/javascript">
+    function checkPrice()
+    {
+      var p=document.seller_add_property.property_price.value;
+      if(p<0)
+      {
+        document.getElementById('price_error').innerHTML="Please Enter Positive Numbers";
+      }
+      else
+      {
+        document.getElementById('price_error').innerHTML=""; 
+      }
+    }    
+  </script>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- Navigation
+    ==========================================-->
+<!-- Header -->
+
+<!-- Get Touch Section -->
+<!-- Contact Section -->
+<div id="contact">
+  <div class="container">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="section-title">
+          <h2>Add Property</h2>
+          
+        </div>
+        <h1 style="color:white">
+          {% if msg %}
+            <b>{{msg}}<b>
+          {% endif %}          
+        </h1>
+        <form name="seller_add_property" method="post" action="{% url 'seller_add_property' %}" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row">
+            <div class="form-group" align="center">
+              Select Property : 
+              <select name="property_type" style="color: black;">
+                
+                <option>---Select Property Type---</option>
+                <option value="Flat">Flat</option>
+                <option value="Tenament">Tenament</option>
+                <option value="Bungalow">Bungalow</option>
+                <option value="Villas">Villas</option>
+
+              </select>
+              <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group" align="center">
+              Select Sub Property : 
+              <select name="property_sub_type" style="color: black;">
+                
+                <option>---Select Sub Property Type---</option>
+                <option value="1 BHK">1 BHK</option>
+                <option value="2 BHK">2 BHK</option>
+                <option value="3 BHK">3 BHK</option>
+                <option value="4 BHK">4 BHK</option>
+                <option value="5 BHK">5 BHK</option>
+                <option value="6 BHK">6 BHK</option>
+                <option value="7 BHK">7 BHK</option>
+                <option value="8 BHK">8 BHK</option>
+              </select>
+              <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group" align="center">
+              Select Location : 
+              <select name="property_location" style="color: black;">
+                
+                <option>---Select Location---</option>
+                <option value="Maninagar">Maninagar</option>
+                <option value="Memnagar">Memnagar</option>
+                <option value="Bopal">Bopal</option>
+                <option value="Iskon">Iskon</option>
+                <option value="Gota">Gota</option>
+                <option value="Vaishnodevi">Vaishnodevi</option>
+                <option value="Naranpura">Naranpura</option>
+                <option value="Sola">Sola</option>
+                <option value="Thaltej">Thaltej</option>
+                <option value="Sarkej">Sarkej</option>
+                <option value="Shilaj">Shilaj</option>
+                <option value="Navrangpura">Navrangpura</option>
+                <option value="Gurukul">Gurukul</option>
+                <option value="Juhapura">Juhapura</option>
+                <option value="Ambavadi">Ambavadi</option>
+                <option value="Shivranjani">Shivranjani</option>
+                <option value="Ghodasar">Ghodasar</option>
+                <option value="Vastrapur">Vastrapur</option>
+                <option value="Vastral">Vastral</option>
+                <option value="K.K Nagar">K.K Nagar</option>
+
+              </select>
+              <p class="help-block text-danger"></p>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" id="name" class="form-control" placeholder="Enter Sq.ft After Writing Units" required="required" name="property_area">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" id="name" class="form-control" placeholder="Enter Property Price In Lakhs & Cr." required="required" name="property_price" onblur="checkPrice();">
+                <p class="help-block text-danger"></p>
+                <span id="price_error"></span>
+              </div>
+            </div>
+            </div>
+          <div class="form-group">
+            <textarea name="property_address" id="message" class="form-control" rows="4" placeholder="Property Address" required></textarea>
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="form-group">
+            <input type="file" id="name" class="form-control" placeholder="Property Image 1" required="required" name="property_image1">
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="form-group">
+            <input type="file" id="name" class="form-control" placeholder="Property Image 2" required="required" name="property_image2">
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="form-group">
+            <input type="file" id="name" class="form-control" placeholder="Property Image 3" required="required" name="property_image3">
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="form-group">
+            <input type="file" id="name" class="form-control" placeholder="Property Image 4" required="required" name="property_image4">
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="form-group">
+            <input type="file" id="name" class="form-control" placeholder="Property Image 5" required="required" name="property_image5">
+            <p class="help-block text-danger"></p>
+          </div>
+          <div id="success"></div>
+          <button type="submit" class="btn btn-custom btn-lg">Add Property</button>
+        </form>
+      </div>
+    </div>
+    
+  </div>
+</div>
+</body>
+</html>
+{% endblock %}

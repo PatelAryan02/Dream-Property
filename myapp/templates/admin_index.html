@@ -1,0 +1,152 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+<body>
+
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper">
+        <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="home-tab">
+                <div class="d-sm-flex align-items-center justify-content-between border-bottom">
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
+                    </li>
+                    
+                  </ul>
+                  
+                </div>
+
+
+
+                {% block content %}
+                
+                <div class="tab-content tab-content-basic">
+                  <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview"> 
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="statistics-details d-flex align-items-center justify-content-between">
+                          <div>
+                            <p class="statistics-title">Total User</p>
+                            <h3 class="rate-percentage">{{total_user}}</h3>
+                            
+                          </div>
+                          <div>
+                            <p class="statistics-title">Total Buyer</p>
+                            <h3 class="rate-percentage">{{total_buyers}}</h3>
+                            
+                          </div>
+                          <div>
+                            <p class="statistics-title">Total Seller</p>
+                            <h3 class="rate-percentage">{{total_sellers}}</h3>
+                            
+                          </div>
+                          <div class="d-none d-md-block">
+                            <p class="statistics-title">Total Properties</p>
+                            <h3 class="rate-percentage">{{total_property}}</h3>
+                            
+                          </div>
+                          <div class="d-none d-md-block">
+                            <p class="statistics-title">Total Deals</p>
+                            <h3 class="rate-percentage">0</h3>
+                            
+                          </div>
+                          <div class="d-none d-md-block">
+                            <p class="statistics-title">Total Feedbacks</p>
+                            <h3 class="rate-percentage">{{total_feedbacks}}</h3>
+                            
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12 d-flex flex-column">
+                        <div class="row flex-grow">
+                          <div class="col-12 grid-margin stretch-card">
+                            <div class="card card-rounded">
+                              <div class="card-body">
+                                <div class="d-sm-flex justify-content-between align-items-start">
+                                  <div>
+                                    <h4 class="card-title card-title-dash">All Users</h4>
+                                   <p class="card-subtitle card-subtitle-dash">You have {{total_user}} User</p>
+                                  </div>
+                                  {% if msg %}
+                                    {{msg}}
+                                  {% endif %}
+                                </div>
+                                <div class="table-responsive  mt-1">
+                                  <table class="table select-table">
+                                    <thead>
+                                      <tr>
+                                        
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                        <th>Mobile</th>
+                                        <th>Action</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      {% for i in all_buyers %}
+                                      <tr>
+                                        <td>
+                                          <div class="d-flex ">
+                                            <img src="{{i.image.url}}" alt="">
+                                            <div>
+                                              <h6>{{i.fname}}</h6>
+                                              
+                                            </div>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <h6>{{i.lname}}</h6>
+                                          
+                                        </td>
+                                        <td>
+                                          <div>
+                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
+                                              <p class="text-success">{{i.email}}</p>
+                                              
+                                            </div>
+                                            
+                                          </div>
+                                        </td>
+                                        <td><div class="badge badge-opacity-warning">{{i.mobile}}</div></td>
+                                        <td>
+                                          <a href="{% url 'admin_delete_user' pk=i.pk %}"><input type="button" name="action" value="Delete" class="btn btn-danger"></a>
+                                        </td>
+                                      </tr>
+                                      {% endfor %}
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+                {% endblock %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>
+

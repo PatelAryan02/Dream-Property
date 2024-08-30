@@ -1,0 +1,236 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="text/javascript">
+    function checkFname()
+    {
+      var f=document.getElementById("fname").value;
+      var reg=/^[A-Za-z]+$/;
+      if(f=="")
+      {
+        document.getElementById("fname_error").innerHTML="Please Enter First Name";
+      }
+      else if(!reg.test(f))
+      {
+        document.getElementById("fname_error").innerHTML="Please Enter Only Alphabets";
+      }
+      else
+      {
+        document.getElementById("fname_error").innerHTML="";
+      }
+    }
+    function checkEmail()
+    {
+      var f=document.getElementById("email").value;
+      var reg=/^[A-Za-z0-9-_.]+@[A-Za-z]+\.[A-Za-z]{2,4}$/;
+      if(f=="")
+      {
+        document.getElementById("email_error").innerHTML="Please Enter Email";
+      }
+      else if(!reg.test(f))
+      {
+        document.getElementById("email_error").innerHTML="Please Enter Valid EMail"; 
+      }
+      else
+      {
+        document.getElementById("email_error").innerHTML="";
+      }
+    }
+    function checkLname()
+    {
+      var f=document.getElementById("lname").value;
+      var reg=/^[A-Za-z]+$/;
+      if(f=="")
+      {
+        document.getElementById("lname_error").innerHTML="Please Enter Lname";
+      }
+      else if(!reg.test(f))
+      {
+        document.getElementById("lname_error").innerHTML="Please Enter Valid Lname"; 
+      }
+      else
+      {
+        document.getElementById("lname_error").innerHTML="";
+      }
+    }
+    function checkMobile()
+    {
+      var f=document.getElementById("mobile").value;
+      var reg=/^\d{10}$/;
+      if(f=="")
+      {
+        document.getElementById("mobile_error").innerHTML="Please Enter Mobile";
+      }
+      else if(!reg.test(f))
+      {
+        document.getElementById("mobile_error").innerHTML="Please Enter 10 Digits Only"; 
+      }
+      else
+      {
+        document.getElementById("mobile_error").innerHTML="";
+      }
+    }
+    function checkPassword()
+    {
+      var f=document.getElementById("password").value;
+      var reg=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+      if(f=="")
+      {
+        document.getElementById("pass_error").innerHTML="Please Enter Password";
+      }
+      else if(!reg.test(f))
+      {
+        document.getElementById("pass_error").innerHTML="Min 1 Upper, Lowe, Special & Numeric(8,15)"; 
+      }
+      else
+      {
+        document.getElementById("pass_error").innerHTML="";
+      }
+    }
+
+    function checkCpassword()
+    {
+      var p1=document.getElementById("password").value;
+      var p2=document.getElementById("cpassword").value;
+      
+      if(p2=="")
+      {
+        document.getElementById("cpass_error").innerHTML="Please Enter Confirm Password";
+      }
+      else if(p1!=p2)
+      {
+        document.getElementById("cpass_error").innerHTML="Password & Confirm Password Does Not Matched"; 
+      }
+      else
+      {
+        document.getElementById("cpass_error").innerHTML="";
+      }
+    }
+  </script>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- Navigation
+    ==========================================-->
+<!-- Header -->
+
+<!-- Get Touch Section -->
+<!-- Contact Section -->
+<div id="contact">
+  <div class="container">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="section-title">
+          <h2>Sign Up</h2>
+          
+        </div>
+        <h3>
+          {% if msg %}
+            {{msg}}
+          {% endif %}          
+        </h3>
+        <form name="signup" method="post" action="{% url 'signup' %}" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row">
+            <div class="form-group" align="center">
+              Select Usertype : 
+              <input type="radio" name="usertype" value="user">User
+              <input type="radio" name="usertype" value="seller">Seller
+              <p class="help-block text-danger"></p>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" id="fname" class="form-control" placeholder="First Name" name="fname" onblur="checkFname();">
+                <p class="help-block text-danger"></p>
+                <span id="fname_error"></span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" id="lname" class="form-control" placeholder="Last Name" name="lname" onblur="checkLname();">
+                <p class="help-block text-danger"></p>
+                <span id="lname_error"></span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <span id="fname_error"></span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <span id="lname_error"></span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="email" id="email" class="form-control" placeholder="Email" name="email" onblur="checkEmail();">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" id="mobile" class="form-control" placeholder="Mobile" name="mobile" onblur="checkMobile();">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <span id="email_error"></span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <span id="mobile_error"></span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="password" id="password" class="form-control" placeholder="Password" name="password" onblur="checkPassword();">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="password" id="cpassword" class="form-control" placeholder="Confirm Password" name="cpassword" onblur="checkCpassword();">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <span id="pass_error"></span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <span id="cpass_error"></span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea name="address" id="message" class="form-control" rows="4" placeholder="Address" name="address"></textarea>
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="col-md-12">
+              <div class="form-group">
+                <span id="address_error"></span>
+          </div>
+          <div class="form-group">
+            <input type="file" id="image" class="form-control" placeholder="User Image" name="image" onblur="checkImage();" required="Upload Image!">
+            <span id="image_error"></span>
+            <p class="help-block text-danger"></p>
+          </div>
+          </div>
+          <div id="success"></div>
+          <button type="submit" class="btn btn-custom btn-lg">Sign UP</button>
+        </form>
+      </div>
+    </div>
+  
+  </div>
+</div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<div id="services">
+  <div class="container">
+    <div class="section-title">
+      <h2>Tenaments</h2>
+    </div>
+    <div class="row">
+      {% for i in tenaments %}
+      <div class="col-md-3">
+        <div class="service-media"> <img src="{{i.property_image1.url}}" alt=" "> </div>
+        <div class="service-desc">
+          {% if i.status %}
+            <h1 style="color:red">Sold Out</h1>
+          {% else %}
+            <a href="{% url 'property_details' pk=i.pk %}"><h3>{{i.property_location}}</h3></a>
+          {% endif %}
+          
+          <p>{{i.property_desc}}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+{% endblock %}

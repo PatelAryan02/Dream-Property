@@ -1,0 +1,107 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- Navigation
+    ==========================================-->
+<!-- Header -->
+
+<!-- Get Touch Section -->
+<!-- Contact Section -->
+<div id="contact">
+  <div class="container">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="section-title">
+          <h2>Edit Property</h2>
+          
+        </div>
+        <h3>
+          {% if msg %}
+            {{msg}}
+          {% endif %}          
+        </h3>
+        <form name="seller_edit_property" method="post" action="{% url 'seller_edit_property' pk=property.pk %}" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row">
+            <div class="form-group" align="center">
+              <h3 style="color:white;"><b>Property Type:{{property.property_type}}</b></h3> 
+              
+              <p class="help-block text-danger"></p>
+            </div>
+            <div class="form-group" align="center">
+              <h3 style="color:white;"><b>Property Type:{{property.property_sub_type}}</b></h3>
+              <p class="help-block text-danger"></p>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" id="name" class="form-control" placeholder="Property Area" required="required" name="property_area" value="{{property.property_area}}">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" id="name" class="form-control" placeholder="Property Price" required="required" name="property_price"  value="{{property.property_price}}">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            </div>
+          <div class="form-group">
+            <textarea name="property_address" id="message" class="form-control" rows="4" placeholder="Property Address" required>{{property.property_address}}</textarea>
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="form-group">
+            Image 1 : <img src="{{property.property_image1.url}}" width="200px" height="200px">
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="form-group">
+            <input type="file" id="name" class="form-control" placeholder="Property Image 1" name="property_image1">
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="form-group">
+            Image 2 : <img src="{{property.property_image2.url}}" width="200px" height="200px">
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="form-group">
+            <input type="file" id="name" class="form-control" placeholder="Property Image 2" name="property_image2">
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="form-group">
+            Image 3 : <img src="{{property.property_image3.url}}" width="200px" height="200px">
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="form-group">
+            <input type="file" id="name" class="form-control" placeholder="Property Image 3" name="property_image3">
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="form-group">
+            Image 4 : <img src="{{property.property_image4.url}}" width="200px" height="200px">
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="form-group">
+            <input type="file" id="name" class="form-control" placeholder="Property Image 4" name="property_image4">
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="form-group">
+            Image 5 : <img src="{{property.property_image5.url}}" width="200px" height="200px">
+            <p class="help-block text-danger"></p>
+          </div>
+          <div class="form-group">
+            <input type="file" id="name" class="form-control" placeholder="Property Image 5" name="property_image5">
+            <p class="help-block text-danger"></p>
+          </div>
+          <div id="success"></div>
+          <button type="submit" class="btn btn-custom btn-lg">Update Property</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
+{% endblock %}

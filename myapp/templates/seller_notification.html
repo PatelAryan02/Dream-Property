@@ -1,0 +1,63 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- Navigation
+    ==========================================-->
+<!-- Header -->
+
+<!-- Get Touch Section -->
+<!-- Contact Section -->
+<div id="contact">
+  <div class="container">
+    <div class="col-md-12">
+      <div class="row">
+        
+        <h3>
+          {% if msg %}
+            {{msg}}
+          {% endif %}          
+        </h3>
+              <br><br>
+                  
+                <h2>Notification: </h2>
+                <table border="1" width="100%">
+                  <tr>
+
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Action</th>
+                  </tr>
+                
+                {% for i in inq %}
+                <tr>
+                  <td>{{i.buyer.fname}}</td>
+                  <td>{{i.buyer.lname}}</td>
+                  <td>{{i.buyer.email}}</td>
+                  <td>{{i.buyer.mobile}}</td>
+                  <td>
+                    {% if i.status %}
+                      <a href=""><input type="button" name="action" value="SOLD" class="btn btn-primary" disabled></a>
+                    {% else %}
+                      <a href="{% url 'seller_property_sell' pk=i.pk %}"><input type="button" name="action" value="SELL" class="btn btn-primary"></a>
+                      {% endif %}
+                  </td>
+                </tr>
+               {% endfor %}
+               </table>
+              
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+</body>
+</html>
+{% endblock %}

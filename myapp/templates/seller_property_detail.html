@@ -1,0 +1,76 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="text/javascript">
+    function Hello()
+    {
+      flag=false;
+      var a=confirm("Are You Sure To Delete?");
+      if(a==true)
+      {
+        flag=true;
+      }
+      else
+      {
+        flag=false;
+      }
+      return flag;
+    }
+  </script>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- Navigation
+    ==========================================-->
+<!-- Header -->
+<!-- Services Section -->
+<div id="services">
+  <div class="container">
+    <div class="section-title">
+      <h2>Added Property</h2>
+    </div>
+    <div class="row">
+
+      
+      <div class="col-md-4">
+        <div class="service-media"> <img src="{{property.property_image2.url}}" alt=" " style="width:300px;height: 300px;"> </div>
+        <div class="service-desc">
+          <h3>{{property.property_type}}</h3>
+          <p>{{property.property_desc}}</p>
+          <p>{{property.property_sub_type}}</p>
+          <p>Price : {{property.property_price}}</p>
+          <p>Area : {{property.property_area}}</p>
+          <p>Address : {{property.property_address}}</p>
+          <a href="{% url 'seller_edit_property' pk=property.pk %}"><input type="button" name="action" value="Edit" class="btn btn-primary"></a>
+          <a href="{% url 'seller_delete_property' pk=property.pk %}" onclick="return Hello();"><input type="button" name="action" value="Delete" class="btn btn-danger"></a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-media"> <img src="{{property.property_image1.url}}" alt=" " style="width:300px;height: 300px;"> </div>
+        <div class="service-desc">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-media"> <img src="{{property.property_image3.url}}" alt=" " style="width:300px;height: 300px;"> </div>
+        <div class="service-desc">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-media"> <img src="{{property.property_image4.url}}" alt=" " style="width:300px;height: 300px;"> </div>
+        <div class="service-desc">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-media"> <img src="{{property.property_image5.url}}" alt=" " style="width:300px;height: 300px;"> </div>
+        <div class="service-desc">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<div id="services">
+  <div class="container">
+    <div class="section-title">
+      <h2>Select Your Property</h2>
+      {% if msg %}
+        <h3>{{msg}}</h3>
+      {% endif %}
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="service-media"> <img src="{% static 'img/services/service-1.jpg' %}" alt=" "> </div>
+        <div class="service-desc">
+          <a href="{% url 'tenaments' %}"><h3>Tenaments</h3></a>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="service-media"> <img src="{% static 'img/services/service-3.jpg' %}" alt=" "> </div>
+        <div class="service-desc">
+          <a href="{% url 'flat' %}"><h3>Flats</h3></a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-media"> <img src="{% static 'img/services/service-3.jpg' %}" alt=" "> </div>
+        <div class="service-desc">
+          <a href="{% url 'bungalow' %}"><h3>Bungalow</h3></a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-media"> <img src="{% static 'img/services/service-6.jpg' %}" alt=" "> </div>
+        <div class="service-desc">
+          <a href="{% url 'villas' %}"><h3>Villas</h3></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+{% endblock %}

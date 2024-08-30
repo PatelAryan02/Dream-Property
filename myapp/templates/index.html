@@ -1,0 +1,99 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- Navigation
+    ==========================================-->
+<!-- Header -->
+<header id="header">
+  <div class="intro">
+    <div class="overlay">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 intro-text">
+            <h1>Dream Property</h1>
+            <!--<a href="#about" class="btn btn-custom btn-lg page-scroll">Learn More</a> </div>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Get Touch Section -->
+
+<!-- About Section -->
+<!--<div id="about">
+  <div class="container">
+    <div class="row">-->
+      <!--<div class="col-xs-12 col-md-6"> <img src="{% static 'img/about.jpg' %}" class="img-responsive" alt=""> </div>-->
+      <!--<div class="col-xs-12 col-md-12">
+        <div class="about-text">
+          <h2>Who We Are</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <h3>Why Choose Us?</h3>
+          <div class="list-style">
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+              <ul>
+                <li>Years of Experience</li>
+                <li>Fully Insured</li>
+                <li>Cost Control Experts</li>
+                <li>100% Satisfaction Guarantee</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+              <ul>
+                <li>Free Consultation</li>
+                <li>Satisfied Customers</li>
+                <li>Project Management</li>
+                <li>Affordable Pricing</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+<!-- Services Section -->
+<div id="services">
+  <div class="container">
+    <div class="section-title">
+      <h2>Choose Your Property Type</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="service-media"> <img src="{% static 'img/services/service-1.jpg' %}" alt=" "> </div>
+        <div class="service-desc">
+          <a href="{% url 'tenaments' %}"><h3>Tenament</h3></a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-media"> <img src="{% static 'img/services/service-5.jpg' %}" alt=" "> </div>
+        <div class="service-desc">
+          <a href="{% url 'flat' %}"><h3>Flats</h3></a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-media"> <img src="{% static 'img/services/service-3.jpg' %}" alt=" "> </div>
+        <div class="service-desc">
+          <a href="{% url 'bungalow' %}"><h3>Bungalow</h3></a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-media"> <img src="{% static 'img/services/service-6.jpg' %}" alt=" "> </div>
+        <div class="service-desc">
+          <a href="{% url 'villas' %}"><h3>Villas</h3></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Gallery Section -->
+<!-- Testimonials Section -->
+
+</body>
+</html>
+{% endblock %}

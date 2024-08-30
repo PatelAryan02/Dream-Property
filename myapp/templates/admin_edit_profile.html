@@ -1,0 +1,104 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- Navigation
+    ==========================================-->
+<!-- Header -->
+
+<!-- Get Touch Section -->
+<!-- Contact Section -->
+<div id="contact">
+  <div class="container">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="section-title">
+          <h2>Edit Profile</h2>
+
+
+        </div>
+        <h3 style="color:white">
+          {% if msg %}
+            {{msg}}
+          {% endif %}          
+        </h3>
+        <form name="frm" method="post" action="{% url 'admin_edit_profile' %}" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row">
+            <div class="form-group" align="center">
+              <table align="center">
+                <tr>
+                  <td>Fname</td>
+                  <td><input type="text" id="name" class="form-control" name="fname" value="{{user.fname}}"></td>
+                </tr>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                  <tr>
+                    <td>Lname</td>
+                    <td><input type="text" id="name" class="form-control" name="lname" value="{{user.lname}}"></td>
+                  </tr>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                  <tr>
+                    <td>Email</td>
+                    <td><input type="text" id="email" class="form-control" name="email" value="{{user.email}}" readonly="readonly"></td>
+                  </tr>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                  <tr>
+                    <td>Mobile</td>
+                    <td><input type="text" id="mobile" class="form-control" name="mobile" value="{{user.mobile}}" required></td>
+                  </tr>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="form-group">
+                  <tr>
+                    <td>Address</td>
+                    <td><textarea rows="5" cols="22" id="name" name="address" class="form-control">{{user.address}}</textarea></td>
+                  </tr>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+              <tr>
+                <td colspan="2" align="center">
+                  <img src="{{user.image.url}}" width="100px" height="100px">
+                </td>
+              </tr>
+              <tr>
+                <td>User Image</td>
+                <td><input type="file" name="image"></td>
+              <p class="help-block text-danger"></p>
+              </tr>
+              </div>
+            </div>
+        </div>
+      </div>
+    </table>
+      <div id="success"></div>
+      <button type="submit" class="btn btn-custom btn-lg">Update Profile</button>
+        
+      </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</form>
+</body>
+</html>
+{% endblock %}

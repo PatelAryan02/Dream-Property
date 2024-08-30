@@ -1,0 +1,49 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- Navigation
+    ==========================================-->
+<!-- Header -->
+
+<!-- Get Touch Section -->
+<!-- Contact Section -->
+<div id="contact">
+  <div class="container">
+    <div class="col-md-8">
+      <div class="row">
+        
+        <h3>
+          {% if msg %}
+            {{msg}}
+          {% endif %}          
+        </h3>
+        <form name="sentMessage" method="post" action="{% url 'search' %}">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <h2>Search:</h2><input type="text" id="name" class="form-control" placeholder="Tenament,Flat,etc..." required="required" name="search" height="10px" width="100px">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+          </div>
+          <div id="Search"></div>
+          <button type="submit" class="btn btn-primary">SEARCH</button> 
+        </form>
+        {% for i in properties %}
+        {{i.property_type}}<br>
+        <a href="{% url 'property_details' pk=i.pk %}"><img src="{{i.property_image1.url}}" height="50" width="50"></a>
+        {% endfor %}
+      </div>
+    </div>
+    
+  </div>
+</div>
+</body>
+</html>
+{% endblock %}
